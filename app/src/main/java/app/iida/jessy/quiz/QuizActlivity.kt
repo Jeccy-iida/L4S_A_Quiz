@@ -1,5 +1,6 @@
 package app.iida.jessy.quiz
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -53,9 +54,13 @@ class QuizActlivity : AppCompatActivity() {
             //現在のクイズ数と、全問クイズ数が一致するか比較
             if (quizCount == quizLists.size) {
                 //一緒だったら、結果画面へ移動する
+                val resultIntent:Intent = Intent(this,ResultActivity::class.java)
                 //クイズ数をセットする
+                resultIntent.putExtra("QuizCount",quizLists.size)
                 //正解数をセットする
+                resultIntent.putExtra("CoeerctCount",correctCount)
                 //結果画面に切り替
+                startActivity(resultIntent)
             } else {
                 //一緒じゃなければ画像を非表示にする
                 judgeImage.isVisible = false
